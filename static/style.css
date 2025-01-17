@@ -1,157 +1,258 @@
-/* Global Styles */
-body {
-    font-family: 'Poppins', sans-serif; /* Modern font */
-    background: linear-gradient(120deg, #333, #111); /* Dark gradient background */
-    background-size: 400% 400%;
-    animation: gradientBackground 15s ease infinite; /* Animated gradient */
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    color: #ffffff; /* Primary text color */
-    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
-@keyframes gradientBackground {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+/* Body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f7f9fb;
+    color: #333;
+    line-height: 1.6;
+    padding-top: 80px; /* Space for fixed nav */
 }
 
 /* Header */
 header {
     text-align: center;
-    margin-top: 20px;
-    padding: 10px;
+    background-color: #0066cc; /* Soft Blue */
+    padding: 30px 0;
+    color: white;
+    border-bottom: 5px solid #004c99; /* Darker Blue for separation */
 }
 
-header h1 {
-    font-size: 3rem;
-    color: #ffffff;
-    text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8);
+h1 {
+    font-size: 3em;
+    margin: 0;
 }
 
-header p {
-    font-size: 1.2rem;
-    color: #bbbbbb;
-    margin-top: 10px;
+/* Navigation */
+nav {
+    background-color: #333; /* Dark Gray */
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
 }
 
-/* Main Content */
-main {
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: calc(100vh - 120px);
-    padding: 20px;
+    justify-content: flex-end;
 }
 
-/* Glassmorphic Container */
-.container {
-    background: rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px); /* Glass effect */
-    -webkit-backdrop-filter: blur(20px);
-    border-radius: 20px;
-    padding: 30px;
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.8); /* Deep shadow for depth */
-    width: 100%; /* Full width */
-    max-width: none; /* Disable max-width */
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block;
+    padding: 16px 24px;
+    color: white;
+    text-decoration: none;
     text-align: center;
-    color: #ffffff;
+    font-size: 1.1em;
 }
 
-/* Title Styling */
-.container h1 {
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    color: #ffdd57; /* Vibrant yellow */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+nav ul li a:hover {
+    background-color: #0077cc; /* Lighter Blue */
+    color: white;
+    transition: background-color 0.3s;
 }
 
-/* Description Styling */
-.container p {
-    font-size: 1.2rem;
-    margin-bottom: 20px;
-    color: #bbbbbb;
+/* Container for forms and content */
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
 }
 
-/* Genre List */
-.genres-checkboxes {
+/* Heading for recommendation page */
+h2 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Genre Checkbox Styles */
+.checkbox-group {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px; /* Space between checkboxes */
+    gap: 15px;
+    margin-bottom: 20px;
 }
 
-.genres-checkboxes label {
+.checkbox-group label {
+    font-size: 1.1em;
+    color: #555;
     display: flex;
     align-items: center;
-    font-size: 1.1rem;
     cursor: pointer;
+    position: relative;
 }
 
-.genres-checkboxes input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin-right: 10px;
+.checkbox-group input[type="checkbox"] {
     appearance: none;
-    background-color: #444;
-    border: 2px solid #ffdd57;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-color: #f7f9fb;
+    border: 2px solid #0077cc;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    transition: background-color 0.3s, border-color 0.3s;
+    position: relative;
 }
 
-.genres-checkboxes input[type="checkbox"]:checked {
-    background-color: #ffdd57;
-    border-color: #ffffff;
-    box-shadow: 0 0 5px #ffdd57, 0 0 15px #ffdd57;
+.checkbox-group input[type="checkbox"]:checked {
+    background-color: #28a745; /* Green */
+    border-color: #28a745;
 }
 
-.genres-checkboxes input[type="checkbox"]:hover {
-    transform: scale(1.1);
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: "✓";
+    color: white;
+    font-size: 14px;
+    position: absolute;
+    top: 1px;
+    left: 4px;
 }
 
-/* Button Styles */
+.checkbox-group input[type="checkbox"]:hover {
+    border-color: #005bb5; /* Hover blue */
+}
+
+.checkbox-group label:hover {
+    color: #0077cc; /* Blue text on hover */
+}
+
+/* Button Styling */
 button {
-    display: inline-block;
-    width: 20%;
-    padding: 15px;
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #ffffff;
-    background: linear-gradient(135deg, #444, #222);
+    background-color: #28a745; /* Green Button */
+    color: white;
+    padding: 12px 20px;
     border: none;
-    border-radius: 30px;
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
     cursor: pointer;
-    transition: all 0.3s ease;
-    margin-top: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    font-size: 1.1em;
+    width: 100%;
+    border-radius: 8px;
+    transition: background-color 0.3s;
 }
 
 button:hover {
-    transform: scale(1.05) translateY(-2px);
-    background: linear-gradient(135deg, #222, #444);
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.7);
+    background-color: #218838; /* Darker Green on hover */
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    header h1 {
-        font-size: 2.5rem;
-    }
+/* Table for displaying movie recommendations */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+}
 
-    .container {
-        padding: 20px;
-    }
+table th, table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 1.1em;
+}
 
-    .genres-checkboxes {
-        flex-direction: column;
-        align-items: center;
-    }
+table th {
+    background-color: #f1f1f1;
+    color: #333;
+}
 
-    .genres-checkboxes label {
-        margin: 10px 0;
-    }
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 1em;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Error Page */
+.error-container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+.error-container h2 {
+    font-size: 2em;
+    color: #e74c3c; /* Red */
+}
+
+.error-container p {
+    font-size: 1.2em;
+    color: #555;
+}
+.how-it-works-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh; /* Makes sure it takes up most of the viewport */
+    text-align: center;
+    padding: 20px;
+}
+
+.how-it-works-content {
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+}
+
+.how-it-works-content h2 {
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+.how-it-works-content p {
+    margin: 10px 0;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* Footer styling */
+footer {
+    text-align: center;
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
 }
