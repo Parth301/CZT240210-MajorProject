@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Recommendations</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/how_to_use"> How To Use</a></li>
+            <li><a href="/about">About Us</a></li>
+
+        </ul>
+    </nav>
+
+    <header>
+        <h1>Your Movie Recommendations</h1>
+    </header>
+
+    <div class="container">
+        {% if movies %}
+            <table>
+                <tr>
+                    <th>Title</th>
+                    <th>Average Rating</th>
+                    <th>Release Year</th>
+                </tr>
+                {% for movie in movies %}
+                <tr>
+                    <td>{{ movie.title }}</td>
+                    <td>{{ movie.avg_rating }}</td>
+                    <td>{{ movie.release_year }}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No recommendations found for the selected genres.</p>
+        {% endif %}
+    </div>
+</body>
+</html>
