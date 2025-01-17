@@ -3,23 +3,22 @@ import pandas as pd
 
 app = Flask(__name__)
 
-# Load the dataset (replace with actual paths)
+# Load the dataset
 movies_file = r'C:\Users\jaypa\OneDrive\Desktop\Movie_Recommend\movie.csv'
 ratings_file = r'C:\Users\jaypa\OneDrive\Desktop\Movie_Recommend\ratings.csv'
 
 movies_df = pd.read_csv(movies_file)
 ratings_df = pd.read_csv(ratings_file)
 
-# Clean the data
+# Clean data
 movies_df.dropna(subset=['title', 'genres'], inplace=True)
 ratings_df.dropna(subset=['userId', 'movieId', 'rating'], inplace=True)
 
-# Extract release year from movie titles
+# get release year from movies
 movies_df['release_year'] = movies_df['title'].str.extract(r'\((\d{4})\)', expand=False).astype(float)
 movies_df['movieId'] = movies_df['movieId'].astype(int)
 ratings_df['movieId'] = ratings_df['movieId'].astype(int)
 
-# Function to recommend movies based on genres and ratings
 # Function to recommend movies based on genres and ratings
 def recommend_movies(genres, preference):
     # Filter movies by selected genres
@@ -49,7 +48,6 @@ def recommend_movies(genres, preference):
 
     # Return top 10 movies with titles, ratings, and release years
     return recommendations[['title', 'avg_rating', 'release_year']].head(10)
-
 
 # Flask Routes
 @app.route('/')
@@ -82,7 +80,6 @@ def how_it_works():
 @app.route('/about')
 def about():
     return render_template('about.html')
-
 
 # Run the Flask app
 if __name__ == "__main__":
